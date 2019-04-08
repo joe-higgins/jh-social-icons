@@ -7,5 +7,15 @@
 * Author: Joe Higgins
 * License: GPL2
 * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+*
+*
+* Prefix all variables, functions and classes with "jh-"
 */
+
+register_activation_hook( jh-social-icons, 'pluginprefix_function_to_run' );
+
+register_deactivation_hook( jh-social-icons, 'pluginprefix_function_to_run' );
+
+register_uninstall_hook(jh-social-icons, 'pluginprefix_function_to_run');
+
  ?>
