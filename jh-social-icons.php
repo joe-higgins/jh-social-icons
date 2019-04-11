@@ -11,16 +11,22 @@
 *
 * Prefix all variables, functions and classes with "jh-"
 */
-if ( !class_exists('jh_social_icons')) {
-  class 'jh_social_icons' 
+
+register_activation_hook( jh-social-icons, 'pluginprefix_function_to_run' );
+
+register_deactivation_hook( jh-social-icons, 'pluginprefix_function_to_run' );
+
+register_uninstall_hook(jh-social-icons, 'pluginprefix_function_to_run');
+
+class Jh_social_icons
+{
+  public function __construct()
   {
-    register_activation_hook( jh-social-icons, 'pluginprefix_function_to_run' );
-
-    register_deactivation_hook( jh-social-icons, 'pluginprefix_function_to_run' );
-
-    register_uninstall_hook(jh-social-icons, 'pluginprefix_function_to_run');
+  	// Admin page calls:
+  	add_action( 'admin_menu', array( $this, 'addAdminMenu' ) );
+  	add_action( 'wp_ajax_store_admin_data', array( $this, 'storeAdminData' ) );
+  	add_action( 'admin_enqueue_scripts', array( $this, 'addAdminScripts' ) );
 
   }
 }
-
  ?>
